@@ -1,0 +1,490 @@
+{
+	"info": {
+		"_postman_id": "e27aba1d-0d47-4867-a3b0-41a89203a813",
+		"name": "Pizza",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth - Create user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);\r",
+							"\r",
+							"if(data.is_success)\r",
+							"{\r",
+							"    pm.environment.set(\"access_token\", data.data.access_token);\r",
+							"    pm.environment.set(\"refresh_token\", data.data.refresh_token);\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"client_id\": \"{{clientId}}\",\r\n    \"client_secret\": \"{{clientSecret}}\",\r\n    \"email\": \"{{login}}\",\r\n    \"password\": \"{{password}}\",\r\n    \"first_name\": \"Toto\",\r\n    \"last_name\": \"Titi\",\r\n    \"phone_number\": \"060000000\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/v1/accounts/register",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"accounts",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Auth - Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);\r",
+							"\r",
+							"if(data.is_success)\r",
+							"{\r",
+							"    pm.environment.set(\"access_token\", data.data.access_token);\r",
+							"    pm.environment.set(\"refresh_token\", data.data.refresh_token);\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"client_id\": \"{{clientId}}\",\r\n    \"client_secret\": \"{{clientSecret}}\",\r\n    \"login\": \"{{login}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/v1/authentication/credentials",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"authentication",
+						"credentials"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Auth - Refresh",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);\r",
+							"\r",
+							"if(data.is_success)\r",
+							"{\r",
+							"    pm.environment.set(\"access_token\", data.data.access_token);\r",
+							"    pm.environment.set(\"refresh_token\", data.data.refresh_token);\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"client_id\": \"{{clientId}}\",\r\n    \"client_secret\": \"{{clientSecret}}\",\r\n    \"refresh_token\": \"{{refresh_token}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/v1/authentication/refresh",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"authentication",
+						"refresh"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User - profile",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);\r",
+							"\r",
+							"if(data.is_success)\r",
+							"{\r",
+							"    \r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/api/v1/accounts/me",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"accounts",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User - Set Profile",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);\r",
+							"\r",
+							"if(data.is_success)\r",
+							"{\r",
+							"    \r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{login}}\",\r\n    \"first_name\": \"Toto2\",\r\n    \"last_name\": \"Titi2\",\r\n    \"phone_number\": \"070000000\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/v1/accounts/me",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"accounts",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User - Set Password",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);\r",
+							"\r",
+							"if(data.is_success)\r",
+							"{\r",
+							"    \r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"old_password\": \"{{password}}\",\r\n    \"new_password\": \"{{password}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/v1/authentication/credentials/set",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"authentication",
+						"credentials",
+						"set"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pizza - List shops",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);\r",
+							"\r",
+							"if(data.is_success)\r",
+							"{\r",
+							"    pm.environment.set(\"shop_id\", data.data[0].id)\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/v1/shops",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"shops"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pizza - List pizzas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);\r",
+							"\r",
+							"if(data.is_success)\r",
+							"{\r",
+							"    pm.environment.set(\"pizza_id\", data.data[0].id)\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/v1/shops/{{shop_id}}/pizzas",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"shops",
+						"{{shop_id}}",
+						"pizzas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pizza - Image",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/v1/shops/{{shop_id}}/pizzas/{{pizza_id}}/image",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"shops",
+						"{{shop_id}}",
+						"pizzas",
+						"{{pizza_id}}",
+						"image"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order - Create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);\r",
+							"\r",
+							"if(data.is_success)\r",
+							"{\r",
+							"    \r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"pizza_ids\": [\r\n        {{pizza_id}},\r\n        {{pizza_id}}\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/v1/shops/{{shop_id}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"shops",
+						"{{shop_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Orders - List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);\r",
+							"\r",
+							"if(data.is_success)\r",
+							"{\r",
+							"    \r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/api/v1/orders",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
