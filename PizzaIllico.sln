@@ -1,12 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaIllico.Api", "PizzaIllico.Api\PizzaIllico.Api.csproj", "{05E99290-C571-4293-8693-81C99C408379}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaIllico.Api", "src\PizzaIllico.Api\PizzaIllico.Api.csproj", "{05E99290-C571-4293-8693-81C99C408379}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaIllico.Dtos", "PizzaIllico.Dtos\PizzaIllico.Dtos.csproj", "{DE397895-5B9C-43D9-8DA5-7CFE07B4F617}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaIllico.Dtos", "src\PizzaIllico.Dtos\PizzaIllico.Dtos.csproj", "{DE397895-5B9C-43D9-8DA5-7CFE07B4F617}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaIllico.SqlMigrations", "PizzaIllico.SqlMigrations\PizzaIllico.SqlMigrations.csproj", "{FB9A065E-6AB2-4B3A-9AA5-66D034E6B18D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaIllico.SqlMigrations", "src\PizzaIllico.SqlMigrations\PizzaIllico.SqlMigrations.csproj", "{FB9A065E-6AB2-4B3A-9AA5-66D034E6B18D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaIllico.Filler", "PizzaIllico.Filler\PizzaIllico.Filler.csproj", "{34AAB411-BC91-4C02-849F-461BBA678D12}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaIllico.Filler", "src\PizzaIllico.Filler\PizzaIllico.Filler.csproj", "{34AAB411-BC91-4C02-849F-461BBA678D12}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
