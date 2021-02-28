@@ -9,4 +9,5 @@ WORKDIR /app
 COPY --from=build /app/src/PizzaIllico.SqlMigrations/out .
 COPY docker/wait-for-it.sh . 
 COPY docker/wait-and-run.sh .
-ENTRYPOINT ["./wait-and-run.sh", "dotnet", "PizzaIllico.SqlMigrations.dll"]
+RUN chmod 755 wait-*.sh
+ENTRYPOINT ["./wait-and-run.sh", "dotnet", "PizzaIllico.SqlMigrations.dll", "prod"]

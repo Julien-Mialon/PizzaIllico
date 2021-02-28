@@ -9,4 +9,5 @@ WORKDIR /app
 COPY --from=build /app/src/PizzaIllico.Api/out .
 COPY docker/wait-for-it.sh . 
 COPY docker/wait-and-run.sh .
+RUN chmod 755 wait-*.sh
 ENTRYPOINT ["./wait-and-run.sh", "dotnet", "PizzaIllico.Api.dll"]
