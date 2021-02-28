@@ -14,6 +14,7 @@ namespace PizzaIllico.Api.Domains.Pizzas.Models
         
         public double Price { get; set; }
         
+        [CustomField("LONGBLOB")]
         public byte[] Image { get; set; }
         
         public bool OutOfStock { get; set; }

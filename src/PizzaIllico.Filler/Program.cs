@@ -14,13 +14,16 @@ namespace PizzaIllico.Filler
 {
     class Program
     {
+        
+        // const string HOST = "http://localhost:5000";
+        const string HOST = "https://pizza.julienmialon.ovh";
         static async Task Main(string[] args)
         {
             var shops = Shops();
-            Console.WriteLine(shops.Count);
+            Console.WriteLine("Shops: " + shops.Count);
 
             var pizzas = Pizzas();
-            Console.WriteLine(pizzas.Count);
+            Console.WriteLine("Pizza: " + pizzas.Count);
             
             //await DownloadImages();
             List<byte[]> images = Directory.EnumerateFiles("images", "*.jpg")
@@ -28,6 +31,8 @@ namespace PizzaIllico.Filler
                 .ToList();
 
             await Insert(shops, pizzas, images);
+            
+            Console.WriteLine("Done");
         }
 
         private static List<ShopItem> Shops()
@@ -200,7 +205,8 @@ namespace PizzaIllico.Filler
                         }).ToList()
                 };
 
-                HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Post, "http://localhost:5000/api/v1/shops");
+                Console.WriteLine($"Inserting {request.Shop.Name}");
+                HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Post, $"{HOST}/api/v1/shops");
                 requestMessage.Content = new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json");
 
                 HttpResponseMessage response = await client.SendAsync(requestMessage);
@@ -209,7 +215,11 @@ namespace PizzaIllico.Filler
                 {
                     continue;
                 }
-
+                else
+                {
+                    Console.WriteLine("-- ERROR --");
+                    Console.WriteLine(res);
+                }
                 
             }
         }
